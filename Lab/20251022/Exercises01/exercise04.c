@@ -7,7 +7,7 @@ int main(){
     do {
         printf("Give a 5-digit number: ");
         scanf("%d", &number);
-    } while (number<10000 || number > 100000); // ο αριθμός πρέπει να είναι πενταψίφιος
+    } while (number<10000 || number > 100000); // ο αριθμός πρέπει να είναι πενταψήφιος
 
 
     int flipped = 0; // ο ανεστραμμένος αριθμός
