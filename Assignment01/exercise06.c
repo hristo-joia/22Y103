@@ -12,7 +12,7 @@ int main() {
 
     // η MAC διεύθυνση με όλες τις οκτάδες 0xFF είναι broadcast
     if (oct1 == 0xFF && oct2 == 0xFF && oct3 == 0xFF && oct4 == 0xFF &&
-        oct5 == 0xFF && oct6 == 0xFF)  // όλες οι οκτάδες είναι FF
+        oct5 == 0xFF && oct6 == 0xFF)  // όλες οι οκτάδες είναι 0xFF
         printf("This is a broadcast MAC address.\n");
 
     // οι άρτιες οκτάδες oct1 είναι unicast
