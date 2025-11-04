@@ -4,22 +4,22 @@
 
 int main() {
     // οι έξι οκτάδες της διεύθυνσης MAC
-    int oct1, oct2, oct3, oct4, oct5, oct6;
+    int oct[6];
 
     printf("Give a MAC address in xx:xx:xx:xx:xx:xx format: ");
-    scanf("%x:%x:%x:%x:%x:%x", &oct1, &oct2, &oct3, &oct4, &oct5, &oct6);
-    // %x για ανάγνωση δεκαεξαδικού
+    scanf("%x:%x:%x:%x:%x:%x", &oct[0], &oct[1], &oct[2], &oct[3], &oct[4],
+          &oct[5]);  // %x για ανάγνωση δεκαεξαδικού
 
     // η MAC διεύθυνση με όλες τις οκτάδες 0xFF είναι broadcast
-    if (oct1 == 0xFF && oct2 == 0xFF && oct3 == 0xFF && oct4 == 0xFF &&
-        oct5 == 0xFF && oct6 == 0xFF)  // όλες οι οκτάδες είναι 0xFF
+    if (oct[0] == 0xFF && oct[1] == 0xFF && oct[2] == 0xFF && oct[3] == 0xFF &&
+        oct[4] == 0xFF && oct[5] == 0xFF)  // όλες οι οκτάδες είναι 0xFF
         printf("This is a broadcast MAC address.\n");
 
-    // οι άρτιες οκτάδες oct1 είναι unicast
-    else if (oct1 % 2 == 0)  // άρτιος % 2 == 0
+    // οι άρτιες οκτάδες oct[0] είναι unicast
+    else if (oct[0] % 2 == 0)  // άρτιος % 2 == 0
         printf("This is a unicast MAC address.\n");
 
-    // οι περιττές οκτάδες oct1 είναι multicast
+    // οι περιττές οκτάδες oct[0] είναι multicast
     else
         printf("This is a multicast MAC address.\n");
 
