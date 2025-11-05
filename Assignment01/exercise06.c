@@ -6,7 +6,7 @@ int main() {
     // οι έξι οκτάδες της διεύθυνσης MAC
     int oct[6];
 
-    printf("Give a MAC address in xx:xx:xx:xx:xx:xx format: ");
+    printf("Give a MAC address in x:x:x:x:x:x format: ");
     scanf("%x:%x:%x:%x:%x:%x", &oct[0], &oct[1], &oct[2], &oct[3], &oct[4],
           &oct[5]);  // %x για ανάγνωση δεκαεξαδικού
 
