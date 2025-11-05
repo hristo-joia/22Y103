@@ -66,8 +66,10 @@ int main() {
     days += 50;  // 50 μέρες μετά
     // πχ. 5 Μαρτίου -> 55 Μαρτίου
 
-    while (1) {  // διόρθωση υπερχείλισης ημερομηνίας,
-                 // πχ. 55 Μαρτίου -> 24 Απριλίου
+    int invalid = 1;
+
+    while (invalid) {  // διόρθωση υπερχείλισης ημερομηνίας,
+                       // πχ. 55 Μαρτίου -> 24 Απριλίου
 
         if (mon > 12) mon = 1;  // διόρθωση υπερχείλισης αριθμού μήνα
 
@@ -79,12 +81,12 @@ int main() {
             case 8:
             case 10:
             case 12:
-                if (days > 31) {
+                if (days > 31) {  // άκυρη ημερομηνία
                     days -= 31;
                     mon += 1;
-                    continue;  // άκυρη ημερομηνία, επανάληψη βρόχου
                 } else
-                    break;  // έγκυρη ημερομηνία, έξοδος switch
+                    invalid = 0;  // έγκυρη ημερομηνία
+                break;
 
             case 4:  // περιπτώσεις μηνών με 30 ημέρες
             case 6:
@@ -93,19 +95,18 @@ int main() {
                 if (days > 30) {
                     days -= 30;
                     mon += 1;
-                    continue;
                 } else
-                    break;
+                    invalid = 0;
+                break;
 
             case 2:  // Φεβρουάριος
                 if (days > feb) {
                     days -= feb;
                     mon += 1;
-                    continue;
                 } else
-                    break;
+                    invalid = 0;
+                break;
         }
-        break;  // έξοδος βρόχου
     }
 
     printf("%d/%d\n", mon, days);
