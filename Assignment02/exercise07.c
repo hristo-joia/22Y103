@@ -29,9 +29,7 @@ int main() {
     int sum = sumOf(N);
     printf("\nThe sum of them is %d", sum);
 
-    // εκτύπωση με μόνο ένα δεκαδικό, αφού οι
-    // μοναδικες περιπτώσεις είναι x.0 και x.5
-    printf("\nTheir average is %.1f", (float)sum / N);
+    printf("\nTheir average is %g", (float)sum / N);
 
     printf("\nTheir squares are: ");
     for (int i = 0; i < N; i++) {

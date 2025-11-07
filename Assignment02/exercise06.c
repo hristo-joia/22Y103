@@ -1,5 +1,5 @@
 #include <stdio.h>
-//Άσκηση 6
+// Άσκηση 6
 
 int main() {
     int n;
@@ -7,22 +7,34 @@ int main() {
     scanf("%d", &n);
 
     int numbers[n];
-    printf("Give %d numbers to scan: ", n);
-    for (int i=0; i<n; i++){
+    printf("Give %d numbers to scan:\n", n);
+    for (int i = 0; i < n; i++) {
         scanf("%d", &numbers[i]);
     }
-    int maxNum = 0;
+    int maxNum = numbers[0];
     int maxCount = 0;
-    for (int i=0; i<n; i++){
-        int count = 1;
-        for (int j=i+1; j<n; j++){
-            if (numbers[i] == numbers[j]) count++;
-        }
-        if (count > maxCount) {
-            maxNum = numbers[i];
-            maxCount = count;
+    int count = 1;
+
+    for (int i = 1; i < n; i++) {
+        // αν είναι ο ίδιος αριθμός
+        if (numbers[i] == numbers[i - 1]) {
+            count++;
+        } else {
+            // αν ο αριθμός είχε τις περισσότερες διαδοχικές εμφανίσεις
+            if (count > maxCount) {
+                maxCount = count;
+                maxNum = numbers[i - 1];
+            }
+
+            // επαναφορά μετρητή
+            count = 1;
         }
     }
-    printf("The number %d appeared the most, with %d occurances.\n", maxNum, maxCount);
+    if (maxCount == 1)  // κανένας αριθμός δεν επανεμφανίστηκε συνεχόμενα
+        printf("No number appeared more than once consecutively.\n");
+    else
+        printf(
+            "The number %d appeared the most, with %d continuous occurances.\n",
+            maxNum, maxCount);
     return 0;
 }
