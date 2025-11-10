@@ -17,7 +17,7 @@ int main() {
     printf("Give annual population growth rate as a percentage: ");
     scanf("%f", &growthRate);
 
-    float doublingTime = log(2) / log(1 + growthRate / 100);
+    float doublingTime = 1 / log2(1 + (growthRate / 100));
     printf("The population will double in %g years.\n", doublingTime);
 
     return 0;
