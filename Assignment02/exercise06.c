@@ -30,6 +30,7 @@ int main() {
             count = 1;
         }
     }
+
     if (maxCount == 1)  // κανένας αριθμός δεν επανεμφανίστηκε συνεχόμενα
         printf("No number appeared more than once consecutively.\n");
     else

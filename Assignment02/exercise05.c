@@ -1,5 +1,32 @@
+#include <stdbool.h>
 #include <stdio.h>
+
 // Άσκηση 5
+int countDivisors(int n) {
+    /* Αυτή η συνάρτηση μετράει και επιστρέφει
+    τους διαιρέτες ενός θετικού ακεραίου */
+    int divisors = 0;
+    for (int i = 1; i <= n; i++)
+        if (n % i == 0) divisors++;
+    return divisors;
+}
+
+bool isPrime(int n) {
+    if (n == 1) {
+        return false;  // ο 1 δεν είναι πρώτος
+    } else {
+        /* Aν ο αριθμός n δεν είναι πρώτος, από θεώρημα
+        ισχύει ότι έχει τουλάχιστον έναν παράγοντα i
+        μικρότερο ή ίσο του √n, δηλαδή i² ≤ n */
+        for (int i = 2; i * i <= n; i++)
+            if (n % i == 0)
+                return false;  // αν βρεθεί ένας παράγοντας i ≤ √n δε χρειάζεται
+                               // να ελέγξουμε για άλλους
+
+        return true;  // αν δε βρεθεί τέτοιος παράγοντας, τότε ο αριθμός είναι
+                      // πρώτος
+    }
+}
 
 int main() {
     int num;
@@ -14,15 +41,11 @@ int main() {
         return 0;
     }
 
-    int divisors = 0;
-    for (int i = 1; i <= num; i++) {
-        if (num % i == 0) divisors++;
-    }
-    // οι πρώτοι διαιρούνται μόνο από το 1 και τον εαυτό τους
-    if (divisors == 2)
-        printf("%d is prime.\n", num, divisors);
-    else
+    if (isPrime(num)) {
+        printf("%d is prime.\n", num);
+    } else
         printf("%d is not prime. It can be divided by %d numbers.\n", num,
-               divisors);
+               countDivisors(num));
+
     return 0;
 }
