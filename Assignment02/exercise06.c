@@ -1,41 +1,43 @@
-#include <stdio.h>
 // Άσκηση 6
+#include <stdio.h>
 
 int main() {
     int n;
-    printf("Give how many numbers to scan: ");
-    scanf("%d", &n);
+    printf("Give how many numbers to scan (>1): ");
+    do
+        scanf("%d", &n);
+    while (n <= 1);  // δεν υπάρχει αρνητική ή μοναδιαία ακολουθία
 
-    int numbers[n];
-    printf("Give %d numbers to scan:\n", n);
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &numbers[i]);
-    }
-    int maxNum = numbers[0];
-    int maxCount = 0;
-    int count = 1;
+    int prevNum;
+    int currNum;
 
-    for (int i = 1; i < n; i++) {
-        // αν είναι ο ίδιος αριθμός
-        if (numbers[i] == numbers[i - 1]) {
-            count++;
-        } else {
-            // αν ο αριθμός είχε τις περισσότερες διαδοχικές εμφανίσεις
-            if (count > maxCount) {
-                maxCount = count;
-                maxNum = numbers[i - 1];
+    int maxNum = prevNum;
+    int maxStreak = 0;
+    int streak = 1;
+    printf("Give %d numbers separated by a new line.\n");
+    scanf("%d", &prevNum);
+
+    for (int i = 1; i < n; i++) {  // ο πρώτος αριθμός διαβάστηκε ήδη
+        scanf("%d", &currNum);
+        if (prevNum == currNum) {
+            // αν είναι ο ίδιος αριθμός
+            streak++;
+            if (streak > maxStreak) {
+                // αν ο αριθμός είχε τη μεγαλύτερη ακολουθία
+                maxStreak = streak;
+                maxNum = prevNum;
             }
-
+        } else {
+            // αποθήκευση ακολουθίας
             // επαναφορά μετρητή
-            count = 1;
+            streak = 1;
         }
+        prevNum = currNum;
     }
 
-    if (maxCount == 1)  // κανένας αριθμός δεν επανεμφανίστηκε συνεχόμενα
+    if (maxStreak == 1)  // κανένας αριθμός δεν επανεμφανίστηκε συνεχόμενα
         printf("No number appeared more than once consecutively.\n");
     else
-        printf(
-            "The number %d appeared the most, with %d continuous occurances.\n",
-            maxNum, maxCount);
+        printf("The number %d appeared the most, with %d continuous occurances.\n", maxNum, maxStreak);
     return 0;
 }

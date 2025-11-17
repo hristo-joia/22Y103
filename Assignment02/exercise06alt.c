@@ -1,5 +1,5 @@
-#include <stdio.h>
 // Άσκηση 6
+#include <stdio.h>
 
 int main() {
     int prevNum;
@@ -20,27 +20,24 @@ int main() {
         if ((prevNum == currNum) && (scanSuccess == 1))
             // αν είναι ο ίδιος αριθμός
             streak++;
-        else {
-            // αποθήκευση ακολουθίας
-            if (streak > maxStreak) {
-                // αν ο αριθμός είχε τη μεγαλύτερη ακολουθία
-                maxStreak = streak;
-                maxNum = prevNum;
-            }
+
+        // αποθήκευση ακολουθίας
+        if (streak > maxStreak) {
+            // αν ο αριθμός είχε τη μεγαλύτερη ακολουθία
+            maxStreak = streak;
+            maxNum = prevNum;
+        } else {
             // επαναφορά μετρητή
             streak = 1;
         }
         prevNum = currNum;
 
-        if (scanSuccess == 0)
-            stop = 1;  // αν ο χρήστης δεν εισήγαγε ψηφίο, τερμάτισε
+        if (scanSuccess == 0) stop = 1;  // αν ο χρήστης δεν εισήγαγε ψηφίο, τερμάτισε
     }
 
     if (maxStreak == 1)  // κανένας αριθμός δεν επανεμφανίστηκε συνεχόμενα
         printf("No number appeared more than once consecutively.\n");
     else
-        printf(
-            "The number %d appeared the most, with %d continuous occurances.\n",
-            maxNum, maxStreak);
+        printf("The number %d appeared the most, with %d continuous occurances.\n", maxNum, maxStreak);
     return 0;
 }

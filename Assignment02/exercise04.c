@@ -1,5 +1,5 @@
-#include <stdio.h>
 // Άσκηση 4
+#include <stdio.h>
 
 int sum3n2(int n) {
     // Υπολόγισε την παράσταση 3²+6²+9²+...+(3N)²
