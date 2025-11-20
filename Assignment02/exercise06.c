@@ -1,8 +1,8 @@
 // Άσκηση 6
 #include <stdio.h>
 void updateMax(int num, int* maxNum, int streak, int* maxStreak) {
-    *maxStreak = streak;
     *maxNum = num;
+    *maxStreak = streak;
     return;
 }
 
