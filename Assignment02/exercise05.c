@@ -30,17 +30,17 @@ bool isPrime(int n) {
 int main() {
     int num;
     do {
-        // μόνο οι φυσικοί μπορούν να είναι πρώτοι
+        // μόνο οι θετικοί ακέραιοι μπορούν να είναι πρώτοι
         printf("Give a positive integer to check if it is prime: ");
         scanf("%d", &num);
     } while (num <= 0);  // επικύρωση εισόδου
 
-    if (num == 1) {
+    if (num == 1) {  // έλεγξε αν ο αριθμός είναι ο 1
         printf("1 is not prime by definition.\n");
         return 0;
     }
 
-    if (isPrime(num)) {
+    if (isPrime(num)) {  // έλεγξε αν ο αριθμός είναι πρώτος
         printf("%d is prime.\n", num);
     } else
         printf("%d is not prime. It can be divided by %d numbers.\n", num, countDivisors(num));

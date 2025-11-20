@@ -1,5 +1,5 @@
-#include <stdio.h>
 // Άσκηση 7
+#include <stdio.h>
 
 int sumOf(int N) {
     int sum = 0;

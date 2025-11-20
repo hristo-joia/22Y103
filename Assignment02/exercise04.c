@@ -16,7 +16,8 @@ int main() {
     } while (n < 1 || n > 10);  // επικύρωση εισόδου
 
     int sum;
-    sum = sum3n2(n);
+    sum = sum3n2(n);  // υπολόγισε το αποτέλεσμα
 
-    printf("%d", sum);
+    printf("%d", sum);  // εκτύπωσε το αποτέλεσμα
+    return 0;
 }
