@@ -5,3 +5,5 @@
 # unignore files with dots
 !*.*
 # effectively ignore every file without a dot
+
+*.zip
