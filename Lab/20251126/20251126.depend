@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1764158687 source:c:\users\ceid\desktop\lab\20251126\exercise2.c
+	<stdio.h>
+
+1764160031 source:c:\users\ceid\desktop\lab\20251126\exercise3.c
+	<stdio.h>
+	<string.h>
+
+1764164009 source:c:\users\ceid\desktop\lab\20251126\exercise4.c
+	<stdio.h>
+	<string.h>
+
