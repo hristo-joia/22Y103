@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 #define N 50  // 100
-#define M 13
+#define MAX_WORD_LEN 13
 
-void scanSentence(char input[N][M]) {
+void scanSentence(char input[N][MAX_WORD_LEN]) {
     for (int i = 0; i < N; i++) {
-        scanf("%s", input[i]);
+        scanf("%s", input[i]);  // διάβασε μία-μία τις λέξεις και αποθήκευσέ τες στον πίνακα input
         char lastChar = input[i][strlen(input[i]) - 1];
         if (lastChar < 65 || lastChar > 123 || (58 <= lastChar && lastChar <= 64))
             input[i][strlen(input[i]) - 1] = '\0';
@@ -13,29 +13,28 @@ void scanSentence(char input[N][M]) {
     }
     return;
 }
-void generateHist(int hist[M], char input[N][M]) {
+void generateHist(int hist[MAX_WORD_LEN], char input[N][MAX_WORD_LEN]) {
     printf("\n");
-    for (int i = 0; i < N; i++) {
-        hist[strlen(input[i])]++;
-    }
+    for (int i = 0; i < N; i++)
+        hist[strlen(input[i])]++;  // για κάθε λέξη μήκους strlen(input[i]) πρόσθεσε 1 στο αντίστοιχο κελί
+
     return;
 }
 
-void printHist(int hist[M]) {
+void printHist(int hist[MAX_WORD_LEN]) {
     printf("\nWord Length\t| Number of Occurances\n");
-    for (int i = 1; i < M + 1; i++) {
-        ;
-        printf("%d\t\t| ", i);
-        for (int j = 0; j < hist[i]; j++) {
-            printf("*");
-        }
+    for (int i = 1; i < MAX_WORD_LEN + 1; i++) {
+        printf("%d\t\t| ", i);  // μήκος λέξης
+        for (int j = 0; j < hist[i]; j++)
+            printf("*");  // hist[i] αστεράκια
+
         printf("\n");
     }
 }
 
 int main() {
-    char input[N][M];
-    int hist[M + 1] = {0};
+    char input[N][MAX_WORD_LEN];
+    int hist[MAX_WORD_LEN + 1] = {0};
     printf("Give %d words to generate a histogram of word lengths:\n", N);
     scanSentence(input);
     generateHist(hist, input);

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #define N 5
+// TODO: uncomment debug lines prefixed with //!
 
 void scanTable(int rows, int cols, int table[rows][cols]) {
     // διαβάζει έναν πίνακα μεγέθους (rows x cols)
@@ -43,17 +44,17 @@ void deleteCross(int rows, int cols, int tablein[rows][cols], int tableout[rows 
 }
 
 int main() {
-    // παράδειγμα πίνακα για αποσφαλμάτωση
+    //! παράδειγμα πίνακα για αποσφαλμάτωση
     int table1[5][5] = {{11, 12, 13, 14, 15}, {21, 22, 23, 24, 25}, {31, 32, 33, 34, 35}, {41, 42, 43, 44, 45}, {51, 52, 53, 54, 55}};
-    // int table1[N][N];
+    //! int table1[N][N];
     int table2[N - 1][N - 1];
 
     printf("Input a %dx%d table by rows:\n", N, N);
 
-    // scanTable(5, 5, table1);  // διάβασε τον αρχικό πίνακα
+    //! scanTable(5, 5, table1);  // διάβασε τον αρχικό πίνακα
 
     printf("Inputted table:\n");
-    printTable(N, N, table1);  // εμφ'ανισε τον αρχικό πίνακα
+    printTable(N, N, table1);  // εμφάνισε τον αρχικό πίνακα
 
     int x;
     do {
