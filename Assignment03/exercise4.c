@@ -1,3 +1,4 @@
+// Άσκηση 4
 #include <stdio.h>
 #include <string.h>
 #define N 50  // 100
