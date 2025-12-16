@@ -2,17 +2,14 @@
 #include <stdio.h>
 #include <string.h>
 #define MAX_STR 100
-#define STORES 2  //! 20
-#define BOOKS 5   //! 500
-// TODO: uncomment debug lines prefixed with //!
+#define STORES 20
+#define BOOKS 500
 
 void scanArray(char arr[][MAX_STR], int length) {
     // συμπλήρωσε τα αλφαριθμητικά δεδομένα του πίνακα arr
     for (int i = 0; i < length; i++) {
-        do {
-            // printf("Scanning %d: ", i);
-            fgets(arr[i], MAX_STR, stdin);
-        } while (strlen(arr[i]) < 2);  // το ελάχιστο μήκος ονόματος είναι 1 χαρακτήρας + \n
+        do fgets(arr[i], MAX_STR, stdin);
+        while (strlen(arr[i]) < 2);  // το ελάχιστο μήκος ονόματος είναι 1 χαρακτήρας + \n
         arr[i][strlen(arr[i]) - 1] = '\0';  // διαγραφή του τελικού '\n'
     }
     return;
@@ -56,61 +53,59 @@ int searchCode(char query[], char arr[][MAX_STR], int size) {
 }
 
 void printBooks(int storeCode, char books[][MAX_STR], int inventory[STORES][BOOKS]) {
-    int hits = 0;
+    int found = 0;
     for (int book = 0; book < BOOKS; book++) {
         // για κάθε βιβλίο
         if (inventory[storeCode][book] > 0) {
             // αν είναι σε απόθεμα
-            if (hits == 0) {
+            if (found == 0) {
                 // αν αυτό είναι το πρώτο βιβλίο που βρέθηκε
                 printf("The store is carrying these books:\n");  // γράψε αυτό το μήνυμα
-                hits = 1;
+                found = 1;
             }  // και μετά αυτό το μήνυμα για κάθε βιβλίο που θα βρεις
             printf("%d copies of %s\n", inventory[storeCode][book], books[book]);
         }
     }
-    if (hits == 0) printf("Store was found but is out of stock on all books.\n");  // αν δε βρέθηκε κανένα βιβλίο σε αυτό το βιβλιοπωλείο
+    if (found == 0) printf("Store was found but is out of stock on all books.\n");  // αν δε βρέθηκε κανένα βιβλίο σε αυτό το βιβλιοπωλείο
 
     return;
 }
 
 void printBookstores(int bookCode, char bookstores[][MAX_STR], int inventory[STORES][BOOKS]) {
-    int hits = 0;
+    int found = 0;
     for (int store = 0; store < STORES; store++) {
         // για κάθε βιβλιοπωλείο
         if (inventory[store][bookCode] > 0) {
             // αν έχει το βιβλίο σε απόθεμα
-            if (hits == 0) {
+            if (found == 0) {
                 // αν αυτό είναι το πρώτο βιβλιοπωλείο που βρέθηκε
                 printf("The book was found in these stores:\n");
-                hits = 1;
+                found = 1;
             }
             printf("%s\t with %d copies\n", bookstores[store], inventory[store][bookCode]);
         }
     }
-    if (hits == 0) printf("Book was found but is out of stock everywhere.\n");  // αν δε βρέθηκε σε κανένα βιβλιοπωλείο
+    if (found == 0) printf("Book was found but is out of stock everywhere.\n");  // αν δε βρέθηκε σε κανένα βιβλιοπωλείο
 
     return;
 }
 
 int main() {
-    char storesArr[STORES][MAX_STR] = {"Aa", "Bb"};  //* ψεύτικες τιμές για αποσφαλμάτωση
-    char booksArr[BOOKS][MAX_STR] = {"Lorem", "Ipsum", "Dolor", "Sit", "Amet"};
-    //! int inventory[STORES][BOOKS] = {0};
-    int inventory[STORES][BOOKS] = {{760, 484, 844, 0, 0},
-                                    {665, 0, 896, 754, 0}};
+    char storesArr[STORES][MAX_STR];
+    char booksArr[BOOKS][MAX_STR];
+    int inventory[STORES][BOOKS] = {0};
 
     printf("Give store names:\n");
-    //! scanArray(storesArr, STORES);
+    scanArray(storesArr, STORES);
     printf("\nThe stores entered are:\n");
     printArray(storesArr, STORES);
 
     printf("Give book titles:\n");
-    //! scanArray(booksArr, BOOKS);
+    scanArray(booksArr, BOOKS);
     printf("\nThe entered books are:\n");
     printArray(booksArr, BOOKS);
 
-    //! scanInventory(STORES, storesArr, BOOKS, booksArr, inventory);
+    scanInventory(STORES, storesArr, BOOKS, booksArr, inventory);
 
     char searchQuery[MAX_STR] = {0};
 

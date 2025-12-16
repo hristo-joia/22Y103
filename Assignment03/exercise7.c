@@ -180,7 +180,7 @@ void ammendMistakes(char mistakesArr[], char attempt) {
 
 int main() {
     char word[MAX_WORD_LEN + 1];
-    int wordMask[MAX_WORD_LEN] = {0};  // λιγότερη μνήμη σε σχέση με int
+    int wordMask[MAX_WORD_LEN] = {0};
     char wrongLetters[8] = "";
     char letter;
     printf("Give a word to play: ");
@@ -200,10 +200,9 @@ int main() {
         putWord(word, wordMask);
         printf("\n%d mistakes remaining.\n\n", mistakesLeft);
 
-        printf("Enter your guess: ");
+        printf("Enter your guess:\n");
         do {
             scanf("%c", &letter);
-            // scanf("%c", &letter);
         } while ((letter < 65 || letter > 90) && (letter < 97 || letter > 121));
 
         if (letter >= 65 && letter <= 90)
@@ -221,7 +220,7 @@ int main() {
     if (won)
         printf("\n%s\nCongratulations! The word was %s.\n\n", hangmanHappyPics[MAX_MISTAKES - mistakesLeft], word);
     else
-        printf("\n%s\nYou lost. The word was %s\n", hangmanPics[8], word);
+        printf("\n%s\nYou lost. The word was %s.\n", hangmanPics[7], word);
 
     return 0;
 }

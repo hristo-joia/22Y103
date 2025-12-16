@@ -1,7 +1,7 @@
 // Άσκηση 4
 #include <stdio.h>
 #include <string.h>
-#define N 50  // 100
+#define N 100
 #define MAX_WORD_LEN 13
 
 void scanSentence(char input[N][MAX_WORD_LEN]) {

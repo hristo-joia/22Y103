@@ -27,9 +27,9 @@ int diagonal(int rows, int cols, int matrix[rows][cols]) {
             for (int j = 0; j < cols; j++) {
                 if (i == j) {
                     sum += matrix[i][j];
-                    printf("%d\t", matrix[i][j]);
+                    printf("%d\t", matrix[i][j]);  // αν i = j εκτύπωσε το στοιχείο
                 } else
-                    printf("0\t");
+                    printf("0\t");  // αν i != j εκτύπωσε 0
             }
             printf("\n");
         }
@@ -43,10 +43,10 @@ int upperTriang(int rows, int cols, int matrix[rows][cols]) {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 if (j >= i) {
-                    sum += matrix[i][j];
+                    sum += matrix[i][j];  // αν i >= j εκτύπωσε το στοιχείο
                     printf("%d\t", matrix[i][j]);
                 } else
-                    printf("0\t");
+                    printf("0\t");  // αλλιώς 0
             }
             printf("\n");
         }
@@ -60,10 +60,10 @@ int lowerTriang(int rows, int cols, int matrix[rows][cols]) {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 if (j <= i) {
-                    sum += matrix[i][j];
+                    sum += matrix[i][j];  // αν i <= j εκτύπωσε το στοιχείο
                     printf("%d\t", matrix[i][j]);
                 } else
-                    printf("0\t");
+                    printf("0\t");  // αλλιώς 0
             }
             printf("\n");
         }
@@ -74,7 +74,7 @@ int lowerTriang(int rows, int cols, int matrix[rows][cols]) {
 void printTranspose(int rows, int cols, int matrix[rows][cols]) {
     for (int j = 0; j < cols; j++) {
         for (int i = 0; i < rows; i++) {
-            printf("%d\t", matrix[i][j]);
+            printf("%d\t", matrix[i][j]);  // εκτυπώνουμε τις στήλες ως γραμμές και αντίστροφα
         }
         printf("\n");
     }
