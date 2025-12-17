@@ -5,10 +5,17 @@
 #define STORES 20
 #define BOOKS 500
 
+void scanStr(char* str, int limit) {
+    char c;
+    while ((c = getchar()) != '\n' && c != EOF);
+    fgets(str, limit, stdin);
+    return;
+}
+
 void scanArray(char arr[][MAX_STR], int length) {
     // συμπλήρωσε τα αλφαριθμητικά δεδομένα του πίνακα arr
     for (int i = 0; i < length; i++) {
-        do fgets(arr[i], MAX_STR, stdin);
+        do scanStr(arr[i], MAX_STR);
         while (strlen(arr[i]) < 2);  // το ελάχιστο μήκος ονόματος είναι 1 χαρακτήρας + \n
         arr[i][strlen(arr[i]) - 1] = '\0';  // διαγραφή του τελικού '\n'
     }
@@ -111,7 +118,7 @@ int main() {
 
     printf("Give book title to search: ");
     do {
-        fgets(searchQuery, MAX_STR, stdin);
+        scanStr(searchQuery, MAX_STR);
     } while (strlen(searchQuery) < 2);  // το ελάχιστο μήκος ονόματος είναι 1 χαρακτήρας + \n
     searchQuery[strlen(searchQuery) - 1] = '\0';  // διαγραφή του τελικού '\n'
 
@@ -124,7 +131,7 @@ int main() {
 
     printf("Give bookstore name to search: ");
     do {
-        fgets(searchQuery, MAX_STR, stdin);
+        scanStr(searchQuery, MAX_STR);
     } while (strlen(searchQuery) < 2);  // το ελάχιστο μήκος ονόματος είναι 1 χαρακτήρας + \n
     searchQuery[strlen(searchQuery) - 1] = '\0';  // διαγραφή του τελικού '\n'
 

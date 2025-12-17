@@ -2,6 +2,13 @@
 #include <string.h>
 #define M 100
 
+void scanStr(char* str, int limit) {
+    char c;
+    while ((c = getchar()) != '\n' && c != EOF);
+    fgets(str, limit, stdin);
+    return;
+}
+
 int rmPunctuation(char input[]) {
     int length = strlen(input);
     char lastChar = input[strlen(input) - 1];
@@ -37,11 +44,11 @@ int main() {
     char B[M];  // το αλφαριθμιτικό στο οποίο θα αναζητηθούν
 
     printf("Give string A with words to search: ");
-    fgets(A, M, stdin);
+    scanStr(A, M);
     rmPunctuation(A);
 
     printf("Give string B in which to search words: ");
-    fgets(B, M, stdin);
+    scanStr(B, M);
 
     char* word = strtok(A, " ");  // βρες την πρώτη λέξη του A
     while (word != NULL) {

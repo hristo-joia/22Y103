@@ -20,7 +20,7 @@ word_table[], int size) (με size συμβολίζεται ο αριθμός τ
 προγραμματισμό.*/
 void initialise(wordPair wordArr[], int size) {
     for (int i = 0; i < size; i++) {
-        fgets(wordArr[i].word, M, stdin);
+        scanStr(wordArr[i].word, M);
         wordArr[i].length = strlen(wordArr[i].word);
     }
     return;

@@ -12,6 +12,13 @@
 #define clear system("clear")  // για Unix-like
 #endif
 
+void scanStr(char* str, int limit) {
+    char c;
+    while ((c = getchar()) != '\n' && c != EOF);
+    fgets(str, limit, stdin);
+    return;
+}
+
 char hangmanPics[8][70] = {
     "  +---+\n"
     "  |   |\n"
@@ -184,7 +191,7 @@ int main() {
     char wrongLetters[8] = "";
     char letter;
     printf("Give a word to play: ");
-    scanf("%s", word);
+    scanStr(word, MAX_WORD_LEN);
     lowerCase(word);
     clear;
     int length = strlen(word);

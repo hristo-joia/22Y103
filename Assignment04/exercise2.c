@@ -7,6 +7,13 @@
 #define N 1
 #define MAX_NAME 20
 
+void scanStr(char* str, int limit) {
+    char c;
+    while ((c = getchar()) != '\n' && c != EOF);
+    fgets(str, limit, stdin);
+    return;
+}
+
 typedef struct employee {
     char name[MAX_NAME];
     char surname[MAX_NAME];
@@ -20,11 +27,11 @@ void scanEmployees(Employee list[], int count) {
         printf("\nScanning employee #%d\n", i + 1);
 
         printf("Enter the employee's name: ");
-        fgets(list[i].name, MAX_NAME, stdin);
+        scanStr(list[i].name, MAX_NAME);
         list[i].name[strcspn(list[i].name, "\n")] = '\0';
 
         printf("Enter the employee's first surname: ");
-        fgets(list[i].surname, MAX_NAME, stdin);
+        scanStr(list[i].surname, MAX_NAME);
         list[i].surname[strcspn(list[i].surname, "\n")] = '\0';
 
         printf("Enter the employee's salary: ");
